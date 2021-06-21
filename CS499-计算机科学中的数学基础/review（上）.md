@@ -107,7 +107,7 @@ $$
 
 
 
-## 应用：counting non-negaive solutions
+## ☆应用：counting non-negaive solutions
 
 TODO：这里为什么是m+r-1？可以再好好想想。
 
@@ -157,7 +157,7 @@ TODO：这里的意思好像我的理解有点误差？再想想。
 
 
 
-## 多项式定理
+## ☆多项式定理
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210617214404514.png" alt="image-20210617214404514" style="zoom:50%;" />
 
@@ -229,7 +229,7 @@ TODO：这里的意思好像我的理解有点误差？再想想。
 
 
 
-## 应用一：错排公式
+## ☆应用一：错排公式
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210617224651789.png" alt="image-20210617224651789" style="zoom:50%;" />
 
@@ -249,7 +249,7 @@ TODO：这里的意思好像我的理解有点误差？再想想。
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210618000755266.png" alt="image-20210618000755266" style="zoom:50%;" />
 
-## Generalized binomial theorem
+## ☆Generalized binomial theorem
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210618001019390.png" alt="image-20210618001019390" style="zoom:50%;" />
 

@@ -35,6 +35,13 @@ Yanjie Ze, June 2021
 
 # 12 Graph: Isomorphism and Score
 
+## 图同构
+
+- 点的双射函数
+- 边的对应存在关系
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621162127012.png" alt="image-20210621162127012" style="zoom:50%;" />
+
 ## 非同构图的计数
 
 先粗略放缩，再估值。
@@ -292,15 +299,57 @@ R(3,3)=6
 
 ### Las Vegas算法
 
-TODO：看懂这个
+思路：求出cross edge大于等于m/2的概率，然后这是几何概率，期望是1/p，因此要想sample出来的次数就是期望。
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210619104723916.png" alt="image-20210619104723916" style="zoom:50%;" />
 
 ### 2. Independent set
 
+先证明一个引理：
 
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621153105406.png" alt="image-20210621153105406" style="zoom:50%;" />
 
-# TODO：17后面没看
+思路：好像是求每个点在独立集中的概率，然后求期望之和，就是一个最大独立集的下限。
+
+然后利用这个引理，并且代入度数最大的时候的情况，就是turan定理。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621153641335.png" alt="image-20210621153641335" style="zoom:50%;" />
+
+### 3 Maximum Satisfaction
+
+m个从句，第i个从句有ki个文字，要想可满足，至少需要：
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621153933318.png" alt="image-20210621153933318" style="zoom:50%;" />
+
+证明思路：
+
+- 求第i个从句可满足的概率：1-不可满足的概率
+- 求所有从句可满足的期望（求个和），然后做个放缩就行
+
+## Lovasz Local Lemma
+
+Dependency graph: 两个事件相互独立，则他们之间没有边。
+
+Lovasz Local Lemma:
+
+- 假设有一堆事件（暂且称呼他们为坏事件，方便直观理解），发生的概率都小于等于p
+- 他们的dependency graph中每个事件的度数小于等于d
+- 并且d和p有这样的关系：$4dp\leq 1$
+- 那么，所有坏事件都不发生的概率大于0。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621155433197.png" alt="image-20210621155433197" style="zoom:50%;" />
+
+## Application 1: Edge-disjoint path
+
+## Application 2: Satisfiability
+
+基本思路：
+
+- 设定坏事件
+- 求p和d
+- 根据$4pd\leq 1$得出结论
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621160325670.png" alt="image-20210621160325670" style="zoom:50%;" />
 
 # 18 Introduction to Random Graphs
 

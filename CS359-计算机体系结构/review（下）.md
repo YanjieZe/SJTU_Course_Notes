@@ -106,7 +106,7 @@ This file contains Chapter 7, 8.
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620211405862.png" alt="image-20210620211405862" style="zoom:50%;" />
 
-
+<img src="https://shuiyuan.sjtu.edu.cn/uploads/default/original/3X/3/a/3aa0aaec941746b8c44503bd37ecdd047aa3ded7.png" style="zoom:50%;" />
 
 # 8 DLP
 
