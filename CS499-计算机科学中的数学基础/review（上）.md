@@ -109,7 +109,7 @@ $$
 
 ## ☆应用：counting non-negaive solutions
 
-TODO：这里为什么是m+r-1？可以再好好想想。
+这里为什么是m+r-1？可以再好好想想。
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210617203345392.png" alt="image-20210617203345392" style="zoom:50%;" />
 

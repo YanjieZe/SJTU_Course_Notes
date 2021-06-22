@@ -4,6 +4,46 @@ Yanjie Ze, June 2021
 
 This file includes Chapter 2,3,4,5,6, noted by Yanjie Ze.
 
+# 1 Introduction
+
+## Dependability依赖性
+
+MTTF：Mean time to failure
+
+MTTR: Mean time to repair
+
+MTBF: Mean time between failures=MTTF+MTTR
+
+Availability: MTTF / MTBF
+
+**MTTF of the whole system:**
+$$
+MTTF_{system}=\frac{1}{\frac{1}{MTTF_1}+\frac{1}{MTTF_2}+\frac{1}{MTTF_3}}
+$$
+
+
+一个练习：
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210622001545559.png" alt="image-20210622001545559" style="zoom:50%;" />
+
+## Principles for computer design
+
+- take advantage of parallelism
+- Principle of locality
+- Focus on common case
+
+## Amdahl's Law
+
+$$
+speedup_{overall}=\frac{1}{1-fraction_{enhanced}+\frac{fraction_{enhanced}}{speedup_{enhanced}}}
+$$
+
+## Processor Performance
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210622002811354.png" alt="image-20210622002811354" style="zoom:50%;" />
+
+
+
 # 2 MIPS ISA
 
 ## MIPS-32

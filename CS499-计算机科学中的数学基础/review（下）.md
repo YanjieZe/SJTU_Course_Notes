@@ -143,7 +143,11 @@ n个顶点能构成的不同树一共有$n^{n-2}$种。
 
 ## A proof via score
 
-TODO：看懂
+用score证明，首先需要证明一个性质：一个和为2n-2的degree sequence的生成树有如下这么多种。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621172232009.png" alt="image-20210621172232009" style="zoom:50%;" />
+
+证明思路：
 
 ## A proof with Vertebrates
 
@@ -353,15 +357,27 @@ Lovasz Local Lemma:
 
 # 18 Introduction to Random Graphs
 
-这一章的内容记录在手写的note上。
+这一章的内容记录在手写的note上也有。
 
 ## Central Limit Theorem
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210619110502255.png" alt="image-20210619110502255" style="zoom:50%;" />
 
+## Pij
 
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621202012877.png" alt="image-20210621202012877" style="zoom:50%;" />
 
-## Diameter 2
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621202002377.png" alt="image-20210621202002377" style="zoom:50%;" />
+
+## First Moment Method
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621203722645.png" alt="image-20210621203722645" style="zoom:50%;" />
+
+## Second Moment Method
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210621203809027.png" alt="image-20210621203809027" style="zoom:50%;" />
+
+## ☆Diameter 2
 
 TODO：最后一个划分a=4，a=3, a=2的是什么怎么来的？
 
@@ -377,7 +393,7 @@ TODO：最后一个划分a=4，a=3, a=2的是什么怎么来的？
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210619155638598.png" alt="image-20210619155638598" style="zoom:50%;" />
 
-## Replication
+## ☆Replication
 
 这里有一个不等式。
 
