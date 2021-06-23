@@ -379,6 +379,8 @@ Lovasz Local Lemma:
 
 ## ☆Diameter 2
 
+证明这个性质的思想很普适性，认真看一下。
+
 TODO：最后一个划分a=4，a=3, a=2的是什么怎么来的？
 
 
