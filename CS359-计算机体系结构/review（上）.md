@@ -60,11 +60,13 @@ J型：6+26
 
 一个地址对应一个byte。
 
-## Big endian and Little Endian
+## ☆Big endian and Little Endian
 
 记住：小字节序：低位对低地址
 
-## Load Byte and Save Byte
+![image-20210623201631132](/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623201631132.png)
+
+## ☆Load Byte and Save Byte
 
 lb和sb指令对于byte进行操作。
 
@@ -82,6 +84,16 @@ $$
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620085924963.png" alt="image-20210620085924963" style="zoom:50%;" />
 
+## Jump
+
+jump指令的更新公式：
+$$
+PC=PC[31:28]:(offset<<2)
+$$
+
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623202526301.png" alt="image-20210623202526301" style="zoom:50%;" />
+
 ##  ☆Problem of Branching Far Away
 
 有可能branch指令的offset不够用，无法到达更远的指令。
@@ -98,9 +110,17 @@ $$
 
 # 3 Single Cycle Processor
 
+## 三种类型的指令
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623203035065.png" alt="image-20210623203035065" style="zoom:50%;" />
+
 这一部分，只讲如下几个指令的实现。
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620092643264.png" alt="image-20210620092643264" style="zoom:50%;" />
+
+## RTL
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623203216234.png" alt="image-20210623203216234" style="zoom:50%;" />
 
 ## Combinaitional Elements
 
@@ -114,12 +134,18 @@ idealized memory: <img src="/Users/yanjieze/Library/Application Support/typora-u
 
 ## Clocking Methodology
 
+**register file的CLK信号只有在write operation的时候才进行判断。**
+
+**在read的时候，先判断地址是否有效，再在access time的时候读入（即时钟上升沿）。**
+
 只在时钟上升沿的时候更新。
 
 一个时钟周期：
 $$
 CycleTime =hold+LongestDelayPath+SetUp+ClockSkew
 $$
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623203620082.png" alt="image-20210623203620082" style="zoom:50%;" />
 
 ## Data Path
 
@@ -131,6 +157,22 @@ $$
    - R type: `R[rd]<-R[rs] op R[rt]`
 4. Memory
 5. Write
+
+## Fetch instructions
+
+PC更新不需要一个write信号，只要时钟信号就行。
+
+读instruction也不需要特意的read信号。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623204125360.png" alt="image-20210623204125360" style="zoom:50%;" />
+
+## Load
+
+注意，这里用的是sign extension。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623204929756.png" alt="image-20210623204929756" style="zoom:50%;" />
+
+
 
 ## Control Signal Logic
 
@@ -144,6 +186,10 @@ $$
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620110816895.png" alt="image-20210620110816895" style="zoom:50%;" />
 
 ## Generating ALUctr
+
+ALUop要3个bit，是因为有R，or，add，sub等超过了2个bit可以表示的范围。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623210203359.png" alt="image-20210623210203359" style="zoom:50%;" />
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620111820456.png" alt="image-20210620111820456" style="zoom:50%;" />
 
@@ -160,7 +206,31 @@ $$
 
 # 4 Multi Cycle Processor
 
+## Register
+
+五个新的register：
+
+- MDR
+- IR
+- A
+- B
+- ALUout
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623211720051.png" alt="image-20210623211720051" style="zoom:50%;" />
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623211549387.png" alt="image-20210623211549387" style="zoom:50%;" />
+
+ 
+
+## 概括
+
+记得在decode的时候把ALUOut先用immediate给算出来。
+
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620143044069.png" alt="image-20210620143044069" style="zoom:50%;" />
+
+## 一个题目
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623212909503.png" alt="image-20210623212909503" style="zoom:50%;" />
 
 # 5 Pipelining
 
@@ -177,6 +247,14 @@ $$
 - 一个时钟周期内，多周期处理器只有一条指令在执行，但是pipeline有多条。
 - pipeline中的指令都要经过五个stage，多周期处理器的指令只经过它所需要的stage。
 
+## Pipeline Control
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623224006522.png" alt="image-20210623224006522" style="zoom:50%;" />
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623224350453.png" alt="image-20210623224350453" style="zoom:50%;" />
+
+
+
 ## Five stages
 
 IF, ID, EX, MEM, WB
@@ -187,7 +265,9 @@ IF, ID, EX, MEM, WB
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620151029967.png" alt="image-20210620151029967" style="zoom:50%;" />
 
+## Data Path with Control
 
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623224821344.png" alt="image-20210623224821344" style="zoom:50%;" />
 
 ## 一个例子：lw
 
@@ -231,7 +311,13 @@ IF, ID, EX, MEM, WB
 
 有时候stalling是不可避免的，因为lw只有在mem阶段才有结果。
 
+## Load-Use Case
+
+
+
 ## Hazard Detection Unit
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623231357195.png" alt="image-20210623231357195" style="zoom:50%;" />
 
 <img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620162313793.png" alt="image-20210620162313793" style="zoom:50%;" />
 
@@ -244,9 +330,17 @@ IF, ID, EX, MEM, WB
 3. branch指令下一条指令从Delayed Slot里面取，这样就不用stall了。
 4. Predict-not-taken(predict失败要添加flush)
 
-## Ways to solve exceptions
+## Most Difficult Exceptions
 
-<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620164152481.png" style="zoom:50%;" />
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623232247943.png" alt="image-20210623232247943" style="zoom:50%;" />
+
+## Steps to save pipeline state
+
+- Force a trap instruction
+- Turn off all writes for the faulting instruction and the following instructions
+- After OS receive control of the exception-handling rountine, it immediately saves the PC of the fault instruction.
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623232424768.png" alt="image-20210623232424768" style="zoom:50%;" />
 
 ## Precise vs Imprecise Exceptions
 
@@ -263,7 +357,7 @@ IF, ID, EX, MEM, WB
 ## Improving Scalar Pipeline
 
 - superscalar pipeline
-- superpipeline
+- superpipeline<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623233226133.png" alt="image-20210623233226133" style="zoom:50%;" />
 
 # 6 ILP
 
@@ -288,11 +382,46 @@ Ideal pipeline CPI is the max performance a pipeline can reach.
 
   2. if an instruction does not depend on a branch then it can not be moved after the branch so that it is controlled by the branch.
 
+## Data Dependency
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623234553874.png" alt="image-20210623234553874" style="zoom:50%;" />
+
+## Name Dependency
+
+- Anti dependence: 和数据相关不太一样，两个指令没有数据依赖，但是有顺序的限制。i先写，j再读。
+- Output dependence: i先写，j再写。也要保持顺序。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623234639402.png" alt="image-20210623234639402" style="zoom:50%;" />
+
+## Control Dependence
+
+被一个branch控制的指令不能移到前面；没有被一个branch控制的指令不能被控制。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210623235204623.png" alt="image-20210623235204623" style="zoom:50%;" />
+
 ## Data Hazard
 
-- RAW
-- WAW
-- WAR
+- RAW:读在写后，要保持指令顺序
+- WAW：写后写，要保持指令顺序
+- WAR：写在读后，
+
+## Latency of FP operation
+
+FPALUop then FPALUop: 3
+
+FPALUop then store double : 2
+
+Load double then FPALUop: 1
+
+Load double then store double: 0
+
+记忆：load， 1， aluop，3，aluop， 2， store 
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210624003102128.png" alt="image-20210624003102128" style="zoom:50%;" />
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210624003447228.png" alt="image-20210624003447228" style="zoom:50%;" />
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210624003516045.png" alt="image-20210624003516045" style="zoom:50%;" />
 
 ## Basic Complier Techniques
 
@@ -306,10 +435,35 @@ Ideal pipeline CPI is the max performance a pipeline can reach.
 
 ## Dynamic branch prediction
 
+用一个hash table记录是否跳转。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210624004040559.png" alt="image-20210624004040559" style="zoom:50%;" />
+
+然后这个table元素状态是否改变，由有限状态机决定。
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210624004138642.png" alt="image-20210624004138642" style="zoom:50%;" />
+
 - 1-bit prediction<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620174826612.png" alt="image-20210620174826612" style="zoom:50%;" />
 - 2-bit prediction<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210620174904776.png" alt="image-20210620174904776" style="zoom:50%;" />
 
 ## Out-of-order Execution
+
+Motivation
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210624004330896.png" alt="image-20210624004330896" style="zoom:50%;" />
+
+具体执行：
+
+IDstage的时候：
+
+- 检查是否有结构冒险
+- 等待数据冒险的消失
+
+
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210624004358950.png" alt="image-20210624004358950" style="zoom:50%;" />
+
+<img src="/Users/yanjieze/Library/Application Support/typora-user-images/image-20210624004730723.png" alt="image-20210624004730723" style="zoom:50%;" />
 
 ## Dynamic Scheduling
 
