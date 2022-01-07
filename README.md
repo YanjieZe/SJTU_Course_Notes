@@ -10,6 +10,20 @@ Notes and Reviews written by [Yanjie Ze](https://github.com/YanjieZe)
 - CS337 计算机图形学
   - 由于是开卷考试，整理了90%以上的课内内容.
   - Well Organized.
+- CS410 人工智能
+  - 包括所有考点以及大纲，整理详细。
+  - 包含树状图进行整理。
+- CS339 计算机网络
+  - 包括所有考点，整理详细。
+
+- CS240 计算机伦理学
+  - 简要归纳授课内容。
+  - 包括一个期末大作业（论文）。
+
+- CS236 云计算技术
+  - Survey
+
+
 
 
 
