@@ -4,8 +4,6 @@ description: 作者：迮炎杰，SJTU CS 19级
 
 # SJTU CS Course Notes
 
-## SJTU Course Notes
-
 Notes and Reviews written by [Yanjie Ze](https://github.com/YanjieZe)
 
 Some notes may not be viewed directly in the website. If necessary, download the [repo](https://github.com/YanjieZe/SJTU\_Course\_Notes) and view all.
