@@ -413,12 +413,12 @@ Backtracking search = DFS + two improvements
 
 一些重点：拒绝采样（何时拒绝、拒绝以后的操作）、似然采样（证据变量如何处理、likelihood如何计算）、吉布斯采样（何时采样、证据变量如何处理、采样哪些节点、条件概率如何计算）。建议把第三次作业第四题的解答看明白，肯定就理解清楚完整的采样过程了。
 
-1. 先验采样：sample $x\_i$ from $P(X\_i|Parents(X\_i))$
-2. 拒绝采样：sample $x\_i$ from $P(X\_i|Parents(X\_i))$，并且如果不满足evidence则直接返回，重新采样（相当于做了个剪枝？）
+1. 先验采样：sample $x\_i$ from $P(X_i|Parents(X_i))$
+2. 拒绝采样：sample $x\_i$ from $P(X_i|Parents(X_i))$，并且如果不满足evidence则直接返回，重新采样（相当于做了个剪枝？）
 3. 似然采样：拒绝采样并没有用到evidence这个先验，因此我们考虑似然采样。
    * 初始w=1
    * 如果x是evidence，$w=w\times P(x|parent(x))$
-   * 如果x不是evidence，sample $x\_i$ from $P(X\_i|Parents(X\_i))$
+   * 如果x不是evidence，sample $x\_i$ from $P(X_i|Parents(X_i))$
    * 最后返回sample和weight，这个weight就是每个sample的weight
 4. 吉布斯采样：
    * 维持一个状态，其中evidence是fixed
@@ -448,11 +448,9 @@ Backtracking search = DFS + two improvements
   - transition probability $p(y_t|y_{t-1})$
   - start probability $p(y_1)$
   - Emission probability $p(x_t|y_t)$
-
 - 三个问题：
   - evaluation：给定HMM和sequence x，算sequence x的概率。用forward算法。
   - decoding：给定HMM和sequence x，算能够最大化sequence x的y的概率。用Viterbi，forward-backward算法。
-  - 
 
 
 ### 11.2 评价HMM中某个序列出现的概率：前向、后向算法
@@ -598,7 +596,7 @@ CNN与RNN这一块只需要简单了解即可、不要求推导。CNN与RNN这�
 
 3. PCA降维的目的、主元的选择标准
    - 是什么：Unsupervised technique for extracting variance structure from high dimensional datasets.
-   - ###### 主元：Principal Components (PC) are orthogonal directions that capture most of the variance in the data. First PC is direction of maximum variance. Subsequent PCs are orthogonal to 1st PC and describe maximum residual variance.
+   - 主元：Principal Components (PC) are orthogonal directions that capture most of the variance in the data. First PC is direction of maximum variance. Subsequent PCs are orthogonal to 1st PC and describe maximum residual variance.
 
 ### 15. 强化学习（课件15）
 
